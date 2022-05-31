@@ -1,6 +1,9 @@
 from functools import reduce
+from numpy import empty
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+
+import api
 
 from .serializers import AmountSerializer, CategorySerializer, ProductSerializer, SizeSerializer, BillSerializer, UserSerializer
 
@@ -60,6 +63,13 @@ def getOutstandingProducts(request):
 
     return Response(productSerializer.data)
 
+
+@api_view(['GET'])
+def getAmountProduct(request, id):
+    amount = Amount.objects.filter(product_id=id)
+    serializer = AmountSerializer(amount, many=True)
+
+    return Response(serializer.data)
             
 
 # Size controller ------------------------------------------------------------------------------------
@@ -92,6 +102,16 @@ def getAmountDetail(request, id):
 
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getAmountByProductIdAndSizeId(request, product_id, size_id):
+    amount = Amount.objects.filter(product = product_id, size = size_id)
+    amountProductWithSize = 0;
+    serializer = AmountSerializer(amount, many=True)
+    for value in serializer.data:
+        amountProductWithSize += value['quantity']
+    
+    return Response(amountProductWithSize)
+
 # detail_bill controller ------------------------------------------------------------------------------------
 @api_view(['GET'])
 def getListDetailBill(request):
@@ -123,3 +143,16 @@ def createUser(request):
 
     return Response(serializer.data)
 
+@api_view(['POST'])
+def signIn(request):
+    try:
+        user = User.objects.get(username=request.data["username"])
+        serializer = UserSerializer(instance=user, many=False)
+        if(serializer.data["password"] != request.data["password"]):
+            return Response({"title":"Password is incorrect!"})
+        return Response(serializer.data)
+    except:
+        return Response({"title": 'Username not exist!'})
+    
+
+    
