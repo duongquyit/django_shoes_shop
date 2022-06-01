@@ -23,7 +23,6 @@ class SizeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class AmountSerializer(serializers.ModelSerializer):
-    products = ProductSerializer(many=True, read_only=True)
     class Meta:
         model = Amount
         fields = '__all__'

@@ -50,3 +50,16 @@ def signIn(request):
         return Response(serializer.data)
     except:
         return Response({"title": 'Username not exist!'})
+
+@api_view(['POST'])
+def updateUserInfo(request, id):
+    try:
+        user = User.objects.get(user_id=id)
+        serializer = UserSerializer(instance=user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response(serializer.errors)
+        return Response(serializer.data)
+    except:
+        return Response({"title":'User can not found!'})

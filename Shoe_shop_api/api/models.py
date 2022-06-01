@@ -9,7 +9,6 @@ class User(models.Model):
     address = models.CharField(max_length=200)
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
-    role = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name + self.username + self.password
@@ -59,7 +58,7 @@ class Cart(models.Model):
     status = models.BooleanField(default=False, null=True)
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}'.format(self.cart_id, self.user, self.product, self.size, self.quantity)
+        return 'id:{}, user:{}, product:{}, size:{}, quantity:{}'.format(self.cart_id, self.user, self.product, self.size, self.quantity)
 
 class Bill(models.Model):
     bill_id = models.AutoField(primary_key=True)

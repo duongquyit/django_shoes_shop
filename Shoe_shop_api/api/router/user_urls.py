@@ -6,4 +6,5 @@ urlpatterns = [
     path('signup', user_controller.createUser, name='signup'),
     path('signin', user_controller.signIn, name='signin'),
     path('<int:id>', user_controller.getUserById, name='get-user-informations'),
+    path('<int:id>/update', user_controller.updateUserInfo, name='update-user-info'),
 ]
