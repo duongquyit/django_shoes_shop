@@ -1,8 +1,9 @@
 from django.urls import path
 
-from api import views
+from ..controller import bill_controller
 
 urlpatterns = [
-    path('list-bill', views.getListDetailBill, name='list-bill'),
-    path('<int:id>', views.getDetailBill, name='bill-detail'),
+    path('list-bill', bill_controller.getListDetailBill, name='list-bill'),
+    path('<int:id>', bill_controller.getBillById, name='bill-detail'),
+    path('create-bill', bill_controller.createBill, name='create-bill'),
 ]

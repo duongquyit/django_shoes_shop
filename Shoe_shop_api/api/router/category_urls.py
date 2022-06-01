@@ -1,8 +1,8 @@
 from django.urls import path
-from .. import views
+from ..controller import category_controller
 
 urlpatterns = [
-    path('list-categories', views.getListCategory, name='list-categories'),
-    path('<int:id>', views.getCategoryById, name='category-detail'),
-    path('<int:id>/product', views.getProductByCategoryId, name="product-by-category-id"),
+    path('list-categories', category_controller.getListCategory, name='list-categories'),
+    path('<int:id>', category_controller.getCategoryById, name='category-detail'),
+    path('<int:id>/product', category_controller.getProductByCategoryId, name="product-by-category-id"),
 ]

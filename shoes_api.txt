@@ -1,6 +1,7 @@
 [GET] product/list-product => get all product
 [GET] product/:id => get product detail with product id
 [GET] product/outstanding-product => get 3 product with every category
+[GET] product/:id/product-amount => get amount product
 
 [GET] category/list-category => get all category
 [GET] category/:id => get category detail with category id
@@ -13,9 +14,17 @@
 [GET] amount/:id => get amount detail with amount id
 [GET] amount/:product-id/:size-id => get quantity product with size
 
-[GET] bill/list-size => get all bill
+[GET] bill/list-bill => get all bill
 [GET] bill/:id => get size detail with bill id
+[POST] bill/create-bill => create new bill
+
+[GET] bill-detail/list-bill-detail => get all bill-detail
+[GET] bill-detail/:id => get size detail with bill-detail id
+[POST] bill-detail/create-bill-detail => create new bill-detail
 
 [GET] user/list-users => get all user
 [POST] user/signup => create new user
 [POST] user/signin => login
+[GET] user/:id => get user information
+
+[GET] cart/:user-id/cart-owner => get cart by user id

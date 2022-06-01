@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Shoe_shop.urls'
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -78,7 +80,7 @@ WSGI_APPLICATION = 'Shoe_shop.wsgi.application'
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'shoes_shop',  
+        'NAME': 'my_shop',  
         'USER': 'root',  
         'PASSWORD': 'quytl123',  
         'HOST': '127.0.0.1',  

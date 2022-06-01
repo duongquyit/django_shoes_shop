@@ -1,8 +1,8 @@
 from django.urls import path
-from .. import views
+from ..controller import amount_controller
 
 urlpatterns = [
-    path('list-amount', views.getListAmounts, name='list-amount'),
-    path('<int:id>', views.getAmountDetail, name='amount-detail'),
-    path('<int:product_id>/<int:size_id>', views.getAmountByProductIdAndSizeId, name='amount-product-size'),
+    path('list-amount', amount_controller.getListAmounts, name='list-amount'),
+    path('<int:id>', amount_controller.getAmountDetail, name='amount-detail'),
+    path('<int:product_id>/<int:size_id>', amount_controller.getAmountByProductIdAndSizeId, name='amount-product-size'),
 ]

@@ -23,5 +23,6 @@ urlpatterns = [
     path('amount/', include('api.router.amount_urls')),
     path('bill/', include('api.router.bill_urls')),
     path('category/', include('api.router.category_urls')),
-    path('user/', include('api.router.user_urls'))
+    path('user/', include('api.router.user_urls')),
+    path('cart/', include('api.router.cart_urls')),
 ]

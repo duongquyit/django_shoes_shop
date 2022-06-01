@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Category, Product, Size, Amount, Detail_Bill, User
+from .models import Bill_Detail, Cart, Category, Product, Size, Amount, Bill, User
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,8 +27,23 @@ class AmountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Amount
         fields = '__all__'
+        depth = 1
+
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'
+        depth = 1
 
 class BillSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Detail_Bill
+        model = Bill
         fields = '__all__'
+
+
+class BillDetailsSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Bill_Detail
+        fields = '__all__'
+        depth = 1

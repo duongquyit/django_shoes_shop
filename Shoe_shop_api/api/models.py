@@ -50,13 +50,33 @@ class Amount(models.Model):
     def __str__(self):
         return '{}, {}, {}'.format(self.product, self.size, self.quantity)
 
-
-class Detail_Bill(models.Model):
-    bill_id = models.AutoField(primary_key=True)
+class Cart(models.Model):
+    cart_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     size = models.ForeignKey(Size, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(null=False)
+    status = models.BooleanField(default=False, null=True)
+
+    def __str__(self):
+        return '{}, {}, {}, {}, {}'.format(self.cart_id, self.user, self.product, self.size, self.quantity)
+
+class Bill(models.Model):
+    bill_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    status = models.BooleanField(default=False, null=True)
+    total = models.IntegerField(null=True)
     create_at = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
-        return 'Id: {}, product_name: {}, size: {}, quantity: {}'.format(self.bill_id, self.product, self.size, self.quantity)
+        return 'Id: {}, user: {}, status: {}, total: {}'.format(self.bill_id, self.user, self.status, self.total)
+
+class Bill_Detail(models.Model):
+    bill_detais_id = models.AutoField(primary_key=True)
+    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(null=True)
+
+    def __str__(self):
+        return 'ID: {}'.format(self.bill_detais_id)
