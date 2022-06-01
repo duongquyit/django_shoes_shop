@@ -26,5 +26,7 @@
 [POST] user/signup => create new user
 [POST] user/signin => login
 [GET] user/:id => get user information
+[POST] user/:id/update => update user information
 
 [GET] cart/:user-id/cart-owner => get cart by user id
+[POST] cart/:id/update-quantity => update product quantity in cart
