@@ -51,9 +51,9 @@ class Amount(models.Model):
 
 class Cart(models.Model):
     cart_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    size = models.ForeignKey(Size, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
     quantity = models.IntegerField(null=False)
     status = models.BooleanField(default=False, null=True)
 
@@ -72,9 +72,9 @@ class Bill(models.Model):
 
 class Bill_Detail(models.Model):
     bill_detais_id = models.AutoField(primary_key=True)
-    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
-    size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True)
+    bill = models.ForeignKey(Bill, on_delete=models.CASCADE, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
+    size = models.ForeignKey(Size, on_delete=models.CASCADE, null=False)
     quantity = models.IntegerField(null=True)
 
     def __str__(self):

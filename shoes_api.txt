@@ -30,3 +30,4 @@
 
 [GET] cart/:user-id/cart-owner => get cart by user id
 [POST] cart/:id/update-quantity => update product quantity in cart
+[POST] cart/create-cart => create cart

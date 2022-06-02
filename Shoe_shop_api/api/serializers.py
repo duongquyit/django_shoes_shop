@@ -30,6 +30,8 @@ class AmountSerializer(serializers.ModelSerializer):
 
 
 class CartSerializer(serializers.ModelSerializer):
+    # user = UserSerializer(read_only=True)
+    # product = ProductSerializer(read_only=True)
     class Meta:
         model = Cart
         fields = '__all__'
