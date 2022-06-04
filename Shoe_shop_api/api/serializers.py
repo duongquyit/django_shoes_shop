@@ -47,4 +47,3 @@ class BillDetailsSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Bill_Detail
         fields = '__all__'
-        depth = 1
