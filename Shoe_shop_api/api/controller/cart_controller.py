@@ -23,3 +23,9 @@ def createCart(request):
     serializer = CartSerializer(instance=cart)
     
     return Response(serializer.data)
+
+@api_view(['POST'])
+def deleteCartById(request, id):
+    Cart.objects.get(cart_id=id).delete()
+
+    return Response({"title": 'Delete successfully!'})
