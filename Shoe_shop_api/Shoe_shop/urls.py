@@ -25,4 +25,5 @@ urlpatterns = [
     path('category/', include('api.router.category_urls')),
     path('user/', include('api.router.user_urls')),
     path('cart/', include('api.router.cart_urls')),
+    path('bill-detail', include('api.router.bill_detail_urls')),
 ]
